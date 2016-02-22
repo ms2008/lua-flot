@@ -7,6 +7,13 @@ Analyzer for nginx access log with embedded lua-flot
 - luafilesystem
 - penlight
 
+## Nginx configuation
+
+```
+log_format main '$time_local $status $request_time $upstream_response_time $remote_addr $upstream_addr $server_addr $host '
+               '"$bytes_sent" "$request_body" "$request" "$http_referer" "$http_user_agent" "$gzip_ratio" "$http_x_forwarded_for"';
+```
+
 # Usage
 
 ```bash
