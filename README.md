@@ -20,3 +20,7 @@ lua ploter.lua base_slow.log 1000
 ```
 
 ![image](https://github.com/ms2008/lua-flot/raw/master/sample.png)
+
+# License
+MIT
+
