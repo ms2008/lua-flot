@@ -1,7 +1,7 @@
 # lua-flot
 Analyzer for nginx access log with embedded lua-flot
 
-# Requirements
+## Requirements
 
 - lua-discount
 - luafilesystem
@@ -14,7 +14,7 @@ log_format main '$time_local $status $request_time $upstream_response_time $remo
                '"$bytes_sent" "$request_body" "$request" "$http_referer" "$http_user_agent" "$gzip_ratio" "$http_x_forwarded_for"';
 ```
 
-# Usage
+## Usage
 
 ```bash
 Usage: ploter.lua FILE LINES_TO_SPLIT
@@ -28,6 +28,6 @@ lua ploter.lua base_slow.log 1000
 
 ![image](https://github.com/ms2008/lua-flot/raw/master/sample.png)
 
-# License
-**BSD**
+## License
+**MIT**
 
