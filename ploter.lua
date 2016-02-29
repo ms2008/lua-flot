@@ -1,7 +1,6 @@
 ----------------------------------------------------------------------------
--- Issue: ULUCU PHP Slow Request Log Analyzer
--- Copyright (C)2015 ULUCU Co.,Ltd. All Rights Reserved
--- Author: yufu.zhao <zyfu@ulucu.com> at 2016-02-19 15:00:11
+-- Issue: Nginx Access Log $request_time Analyzer
+-- Copyright (C)2015 poslua <poslua@gmail.com>
 ----------------------------------------------------------------------------
 
 -- 清除日志文件
@@ -74,7 +73,7 @@ end
 -- 生成 pretty md 文件
 local plot_md = {
     "",
-    "##Ulucu PHP 慢请求统计",
+    "##Nginx Access_Log request_time Statistics",
     ""
 }
 

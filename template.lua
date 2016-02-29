@@ -1,7 +1,6 @@
 ----------------------------------------------------------------------------
--- Issue: ULUCU PHP Slow Request Log Analyzer
--- Copyright (C)2015 ULUCU Co.,Ltd. All Rights Reserved
--- Author: yufu.zhao <zyfu@ulucu.com> at 2016-02-17 10:21:15
+-- Issue: Nginx Access Log $request_time Analyzer
+-- Copyright (C)2015 poslua <poslua@gmail.com>
 ----------------------------------------------------------------------------
 
 local flot = require 'flot'
