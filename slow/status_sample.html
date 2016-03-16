@@ -1,0 +1,212 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Ulucu Performance</title>
+    <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="flot/excanvas.min.js"></script><![endif]-->
+    <script language="javascript" type="text/javascript" src="js/jquery.js"></script>
+    <script language="javascript" type="text/javascript" src="js/jquery.flot.js"></script>
+   <style type="text/css">
+       .keyword {font-weight: bold; color: #6666AA; }
+       .number  { color: #AA6666; }
+       .string  { color: #8888AA; }
+       .comment { color: #666600; }
+       pre { font-weight: bold; }
+       h2 {
+           padding-top: 10px;
+       }
+       body {
+           padding-left: 6em;
+           width: 50em;
+           font-family: arial, helvetica, geneva, sans-serif;
+           background-color: #ffffff; margin: 0px;
+       }
+   </style>
+</head>
+<body>
+
+
+<h2>Ulucu OpenResty API 延迟统计</h2>
+
+
+<div id="placeholder1" style="width:1200px;height:270px"></div>
+
+
+<script type="text/javascript">
+$(function () {
+		var data = [],
+			totalPoints = 300;
+
+		function getRandomData() {
+
+			if (data.length > 0)
+				data = data.slice(1);
+
+			// Do a random walk
+
+			while (data.length < totalPoints) {
+
+				var prev = data.length > 0 ? data[data.length - 1] : 50,
+					y = prev + Math.random() * 10 - 5;
+
+				if (y < 0) {
+					y = 0;
+				} else if (y > 100) {
+					y = 100;
+				}
+
+				data.push(y);
+			}
+
+			// Zip the generated y values with the x values
+
+			var res = [];
+			for (var i = 0; i < data.length; ++i) {
+				res.push([i, data[i]])
+			}
+
+			return res;
+		}
+
+		var data2 = [];
+
+		function getRandomData2() {
+
+			if (data2.length > 0)
+				data2 = data2.slice(1);
+
+			// Do a random walk
+
+			while (data2.length < totalPoints) {
+
+				var prev = data2.length > 0 ? data2[data2.length - 1] : 50,
+					y = prev + Math.random() * 10 - 5;
+
+				if (y < 0) {
+					y = 0;
+				} else if (y > 100) {
+					y = 100;
+				}
+
+				data2.push(y);
+			}
+
+			// Zip the generated y values with the x values
+
+			var res = [];
+			for (var i = 0; i < data2.length; ++i) {
+				res.push([i, data2[i]])
+			}
+
+			return res;
+		}
+
+		var plot = $.plot("#placeholder1", [ {label:"request_time",data:getRandomData()},{label:"upstream_time",data:getRandomData()} ], {
+			series: {
+				shadowSize: 0	// Drawing is faster without shadows
+			},
+			lines: {
+			    fill: false
+			},
+			yaxis: {
+				min: 0,
+				max: 100
+			},
+			xaxis: {
+				show: true
+			}
+		});
+
+		function update() {
+
+			plot.setData([ {label:"request_time",data:getRandomData()},{label:"upstream_time",data:getRandomData2()}]);
+
+			// Since the axes don't change, we don't need to call plot.setupGrid()
+
+			plot.draw();
+			setTimeout(update, 500);
+		}
+
+		update();
+
+});
+</script>
+
+
+
+<h2>Ulucu OpenResty Lua GC 占用情况统计</h2>
+
+
+<div id="placeholder2" style="width:1200px;height:270px"></div>
+
+
+<script type="text/javascript">
+$(function () {
+		var data = [],
+			totalPoints = 300;
+
+		function getRandomData() {
+
+			if (data.length > 0)
+				data = data.slice(1);
+
+			// Do a random walk
+
+			while (data.length < totalPoints) {
+
+				var prev = data.length > 0 ? data[data.length - 1] : 50,
+					y = prev + Math.random() * 10 - 5;
+
+				if (y < 0) {
+					y = 0;
+				} else if (y > 100) {
+					y = 100;
+				}
+
+				data.push(y);
+			}
+
+			// Zip the generated y values with the x values
+
+			var res = [];
+			for (var i = 0; i < data.length; ++i) {
+				res.push([i, data[i]])
+			}
+
+			return res;
+		}
+
+		var plot = $.plot("#placeholder2", [ getRandomData() ], {
+			series: {
+				shadowSize: 0,	// Drawing is faster without shadows
+				color: "#CB4B4B" //"#AFD8F8"
+			},
+			lines: {
+			    fill: 1
+			},
+			yaxis: {
+				min: 0,
+				max: 100
+			},
+			xaxis: {
+				show: true
+			},
+		});
+
+		function update() {
+
+			plot.setData([getRandomData()]);
+
+			// Since the axes don't change, we don't need to call plot.setupGrid()
+
+			plot.draw();
+			setTimeout(update, 3000);
+		}
+
+		update();
+
+});
+</script>
+
+
+
+</body></html>
