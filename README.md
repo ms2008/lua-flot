@@ -3,6 +3,7 @@ Analyzer for nginx access log with embedded lua-flot
 
 ## Requirements
 
+- **[lua-flot](http://stevedonovan.github.io/lua-flot/flot-lua.html)**
 - lua-discount
 - luafilesystem
 - penlight
